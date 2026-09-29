@@ -1,0 +1,23 @@
+{
+  "sector": "digital_public_services",
+  "description": "Digital infrastructure and public service availability.",
+  "indicators": [
+    {"id": "digital_infrastructure", "name": "Digital Infrastructure", "description": "Fiber networks, data centers.", "unit": "Index", "weight": 0.3, "current_value": 60.0},
+    {"id": "service_availability", "name": "Service Availability", "description": "Online portals for government services.", "unit": "Index", "weight": 0.25, "current_value": 70.0},
+    {"id": "accessibility", "name": "Digital Accessibility", "description": "Ease of use and vernacular support.", "unit": "Index", "weight": 0.2, "current_value": 55.0},
+    {"id": "adoption", "name": "Citizen Adoption", "description": "Active users of digital services.", "unit": "Index", "weight": 0.25, "current_value": 65.0}
+  ],
+  "historical_data": [],
+  "decisions": [],
+  "dependencies": [
+    {"source": "digital_infrastructure", "target": "service_availability", "type": "positive", "weight": 0.9, "description": "Infra enables service hosting."},
+    {"source": "service_availability", "target": "accessibility", "type": "positive", "weight": 0.5, "description": "More services prompt accessibility improvements."},
+    {"source": "accessibility", "target": "adoption", "type": "positive", "weight": 0.8, "description": "Easier to use means more adoption."}
+  ],
+  "cross_sector_dependencies": [],
+  "interventions": [
+    {"id": "inv_broadband", "name": "Rural Broadband Scheme", "description": "Connect 100,000 villages with optical fiber.", "target_indicator": "digital_infrastructure", "expected_improvement": 0.25, "time_horizon_years": 4}
+  ],
+  "assumptions": [],
+  "sources": []
+}

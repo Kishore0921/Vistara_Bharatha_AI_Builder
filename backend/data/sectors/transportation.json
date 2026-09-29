@@ -1,0 +1,23 @@
+{
+  "sector": "transportation",
+  "description": "Transportation networks, mobility, and travel efficiency.",
+  "indicators": [
+    {"id": "network_capacity", "name": "Network Capacity", "description": "Volume of traffic the network can handle.", "unit": "Index", "weight": 0.3, "current_value": 45.0},
+    {"id": "travel_efficiency", "name": "Travel Efficiency", "description": "Speed and reliability of transit.", "unit": "Index", "weight": 0.25, "current_value": 50.0},
+    {"id": "logistics", "name": "Logistics Throughput", "description": "Goods moved per day.", "unit": "Index", "weight": 0.25, "current_value": 55.0},
+    {"id": "economic_activity", "name": "Regional Economic Activity", "description": "Local GDP driven by transit.", "unit": "Index", "weight": 0.2, "current_value": 60.0}
+  ],
+  "historical_data": [],
+  "decisions": [],
+  "dependencies": [
+    {"source": "network_capacity", "target": "travel_efficiency", "type": "positive", "weight": 0.8, "description": "Higher capacity improves travel times."},
+    {"source": "travel_efficiency", "target": "logistics", "type": "positive", "weight": 0.7, "description": "Efficient travel boosts logistics."},
+    {"source": "logistics", "target": "economic_activity", "type": "positive", "weight": 0.6, "description": "Trade throughput increases activity."}
+  ],
+  "cross_sector_dependencies": [],
+  "interventions": [
+    {"id": "inv_highways", "name": "Expressway Expansion", "description": "Add 5,000 km of new expressways.", "target_indicator": "network_capacity", "expected_improvement": 0.2, "time_horizon_years": 5}
+  ],
+  "assumptions": [],
+  "sources": []
+}

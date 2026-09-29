@@ -1,0 +1,23 @@
+{
+  "sector": "infrastructure",
+  "description": "Physical infrastructure, logistics, and connectivity.",
+  "indicators": [
+    {"id": "infrastructure_capacity", "name": "Infrastructure Capacity", "description": "Roads, ports, rail networks.", "unit": "Index", "weight": 0.3, "current_value": 50.0},
+    {"id": "connectivity", "name": "Connectivity", "description": "Last-mile reach.", "unit": "Index", "weight": 0.3, "current_value": 45.0},
+    {"id": "economic_activity", "name": "Economic Activity", "description": "Trade enabled by infrastructure.", "unit": "Index", "weight": 0.2, "current_value": 60.0},
+    {"id": "service_accessibility", "name": "Service Accessibility", "description": "Access to healthcare/education.", "unit": "Index", "weight": 0.2, "current_value": 55.0}
+  ],
+  "historical_data": [],
+  "decisions": [],
+  "dependencies": [
+    {"source": "infrastructure_capacity", "target": "connectivity", "type": "positive", "weight": 0.8, "description": "More infra improves connectivity."},
+    {"source": "connectivity", "target": "economic_activity", "type": "positive", "weight": 0.7, "description": "Connectivity spurs economic activity."},
+    {"source": "connectivity", "target": "service_accessibility", "type": "positive", "weight": 0.6, "description": "Improves reach of public services."}
+  ],
+  "cross_sector_dependencies": [],
+  "interventions": [
+    {"id": "inv_rail", "name": "Freight Corridors", "description": "Build dedicated freight rail corridors.", "target_indicator": "infrastructure_capacity", "expected_improvement": 0.2, "time_horizon_years": 7}
+  ],
+  "assumptions": [],
+  "sources": []
+}

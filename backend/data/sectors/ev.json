@@ -1,0 +1,67 @@
+{
+  "sector": "ev",
+  "description": "Electric Vehicle Ecosystem spanning adoption, manufacturing, infrastructure, and skills.",
+  "indicators": [
+    {"id": "skilled_workforce", "name": "Skilled Workforce", "description": "Availability of trained engineers and technicians.", "unit": "Index", "weight": 0.15, "current_value": 48.0},
+    {"id": "manufacturing_capacity", "name": "Manufacturing Capacity", "description": "Total EV and component production capacity.", "unit": "Index", "weight": 0.15, "current_value": 72.0},
+    {"id": "ev_production", "name": "EV Production", "description": "Actual volume of EVs produced.", "unit": "Index", "weight": 0.10, "current_value": 65.0},
+    {"id": "ev_availability", "name": "EV Availability", "description": "Models available and accessible to consumers.", "unit": "Index", "weight": 0.10, "current_value": 60.0},
+    {"id": "ev_adoption", "name": "EV Adoption", "description": "Consumer adoption and sales rate.", "unit": "Index", "weight": 0.20, "current_value": 58.0},
+    {"id": "charging_demand", "name": "Charging Demand", "description": "Demand for public charging infrastructure.", "unit": "Index", "weight": 0.10, "current_value": 55.0},
+    {"id": "charging_infrastructure", "name": "Charging Infrastructure", "description": "Availability and coverage of charging stations.", "unit": "Index", "weight": 0.10, "current_value": 42.0},
+    {"id": "energy_pressure", "name": "Grid / Energy Pressure", "description": "Strain on the electrical grid from EV charging.", "unit": "Index", "weight": 0.10, "current_value": 40.0}
+  ],
+  "historical_data": [
+    {"year": 2021, "values": {"ev_adoption": 20.0, "charging_infrastructure": 15.0}},
+    {"year": 2022, "values": {"ev_adoption": 35.0, "charging_infrastructure": 25.0}},
+    {"year": 2023, "values": {"ev_adoption": 58.0, "charging_infrastructure": 42.0}}
+  ],
+  "decisions": [
+    {
+      "id": "d1",
+      "intervention": "FAME II Subsidy",
+      "period": "2019-2024",
+      "objective": "Boost EV adoption and localized manufacturing",
+      "affected_indicators": ["ev_adoption", "manufacturing_capacity"],
+      "outcome": "Adoption increased, but localized component supply lagged.",
+      "limitations": "Subsidy budget exhausted faster than expected.",
+      "source_type": "REAL DATA"
+    }
+  ],
+  "dependencies": [
+    {"source": "skilled_workforce", "target": "manufacturing_capacity", "type": "positive", "weight": 0.8, "description": "Skilled labor directly constraints manufacturing."},
+    {"source": "manufacturing_capacity", "target": "ev_production", "type": "positive", "weight": 0.9, "description": "Capacity dictates maximum production."},
+    {"source": "ev_production", "target": "ev_availability", "type": "positive", "weight": 0.8, "description": "Production determines market availability."},
+    {"source": "ev_availability", "target": "ev_adoption", "type": "positive", "weight": 0.6, "description": "Choice and availability drive adoption."},
+    {"source": "ev_adoption", "target": "charging_demand", "type": "positive", "weight": 0.9, "description": "More EVs mean more demand for charging."},
+    {"source": "charging_demand", "target": "charging_infrastructure", "type": "constraint", "weight": 0.7, "description": "Demand outpaces infrastructure setup."},
+    {"source": "charging_infrastructure", "target": "energy_pressure", "type": "positive", "weight": 0.5, "description": "More chargers put strain on localized grids."},
+    {"source": "charging_infrastructure", "target": "ev_adoption", "type": "positive", "weight": 0.7, "description": "Range anxiety is mitigated by charging infra."}
+  ],
+  "cross_sector_dependencies": [
+    {"target_sector": "skills_employment", "source_node": "training_capacity", "target_node": "skilled_workforce", "type": "positive", "weight": 0.9, "description": "National training initiatives increase skilled workers."},
+    {"target_sector": "energy", "source_node": "charging_infrastructure", "target_node": "grid_reliability", "type": "constraint", "weight": 0.6, "description": "Charging loads challenge local grid reliability."}
+  ],
+  "interventions": [
+    {
+      "id": "inv_skills",
+      "name": "Increase Skilled Workforce",
+      "description": "Launch industry training and university EV programs.",
+      "target_indicator": "skilled_workforce",
+      "expected_improvement": 0.20,
+      "time_horizon_years": 5,
+      "dependencies_addressed": ["manufacturing_capacity"]
+    },
+    {
+      "id": "inv_charging",
+      "name": "Accelerate Charger Deployment",
+      "description": "Subsidize fast-charger installation along highways.",
+      "target_indicator": "charging_infrastructure",
+      "expected_improvement": 0.30,
+      "time_horizon_years": 3,
+      "dependencies_addressed": ["ev_adoption"]
+    }
+  ],
+  "assumptions": ["Battery supply chain scales linearly with manufacturing capacity."],
+  "sources": [{"name": "Ministry of Heavy Industries", "url": "#"}]
+}

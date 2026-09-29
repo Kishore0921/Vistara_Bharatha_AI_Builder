@@ -1,0 +1,23 @@
+{
+  "sector": "skills_employment",
+  "description": "Workforce training, capacity, and employment rates.",
+  "indicators": [
+    {"id": "training_capacity", "name": "Training Capacity", "description": "Vocational and university seats.", "unit": "Index", "weight": 0.25, "current_value": 45.0},
+    {"id": "skilled_workforce", "name": "Skilled Workforce", "description": "Number of certified professionals.", "unit": "Index", "weight": 0.35, "current_value": 40.0},
+    {"id": "employment", "name": "Employment Rate", "description": "Placement of skilled workers.", "unit": "Index", "weight": 0.25, "current_value": 55.0},
+    {"id": "industry_capacity", "name": "Industry Absorptive Capacity", "description": "Jobs available.", "unit": "Index", "weight": 0.15, "current_value": 50.0}
+  ],
+  "historical_data": [],
+  "decisions": [],
+  "dependencies": [
+    {"source": "training_capacity", "target": "skilled_workforce", "type": "positive", "weight": 0.9, "description": "Training creates skilled workers."},
+    {"source": "skilled_workforce", "target": "employment", "type": "positive", "weight": 0.7, "description": "Skills lead to employment."},
+    {"source": "employment", "target": "industry_capacity", "type": "constraint", "weight": 0.6, "description": "High employment strains job availability."}
+  ],
+  "cross_sector_dependencies": [],
+  "interventions": [
+    {"id": "inv_vocational", "name": "Expand Vocational Centers", "description": "Open 500 new advanced vocational training centers.", "target_indicator": "training_capacity", "expected_improvement": 0.25, "time_horizon_years": 3}
+  ],
+  "assumptions": [],
+  "sources": []
+}

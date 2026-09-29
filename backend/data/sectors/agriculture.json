@@ -1,0 +1,23 @@
+{
+  "sector": "agriculture",
+  "description": "Agricultural productivity, water efficiency, and market access.",
+  "indicators": [
+    {"id": "water_efficiency", "name": "Water Efficiency", "description": "Efficiency of irrigation and water usage.", "unit": "Index", "weight": 0.25, "current_value": 45.0},
+    {"id": "crop_productivity", "name": "Crop Productivity", "description": "Yield per hectare.", "unit": "Index", "weight": 0.25, "current_value": 55.0},
+    {"id": "storage_logistics", "name": "Storage & Logistics", "description": "Cold storage and transport capacity.", "unit": "Index", "weight": 0.25, "current_value": 35.0},
+    {"id": "market_access", "name": "Market Access", "description": "Farmer connectivity to buyers.", "unit": "Index", "weight": 0.25, "current_value": 50.0}
+  ],
+  "historical_data": [{"year": 2023, "values": {"water_efficiency": 45.0}}],
+  "decisions": [],
+  "dependencies": [
+    {"source": "water_efficiency", "target": "crop_productivity", "type": "positive", "weight": 0.8, "description": "Better water usage improves yield."},
+    {"source": "crop_productivity", "target": "storage_logistics", "type": "constraint", "weight": 0.7, "description": "Higher yield strains storage."},
+    {"source": "storage_logistics", "target": "market_access", "type": "positive", "weight": 0.9, "description": "Good logistics improve market access."}
+  ],
+  "cross_sector_dependencies": [],
+  "interventions": [
+    {"id": "inv_irrigation", "name": "Micro-Irrigation Subsidy", "description": "Subsidize drip irrigation systems.", "target_indicator": "water_efficiency", "expected_improvement": 0.20, "time_horizon_years": 3}
+  ],
+  "assumptions": [],
+  "sources": []
+}

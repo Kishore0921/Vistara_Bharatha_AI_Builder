@@ -1,0 +1,23 @@
+{
+  "sector": "energy",
+  "description": "Energy generation, grid capacity, and renewable integration.",
+  "indicators": [
+    {"id": "generation_capacity", "name": "Generation Capacity", "description": "Total MW installed capacity.", "unit": "Index", "weight": 0.3, "current_value": 65.0},
+    {"id": "grid_reliability", "name": "Grid Reliability", "description": "Uptime and stability of the grid.", "unit": "Index", "weight": 0.3, "current_value": 60.0},
+    {"id": "industrial_capacity", "name": "Industrial Energy Capacity", "description": "Energy available for industries.", "unit": "Index", "weight": 0.2, "current_value": 55.0},
+    {"id": "electrification", "name": "Electrification Rate", "description": "Percentage of populace with access.", "unit": "Index", "weight": 0.2, "current_value": 85.0}
+  ],
+  "historical_data": [],
+  "decisions": [],
+  "dependencies": [
+    {"source": "generation_capacity", "target": "grid_reliability", "type": "positive", "weight": 0.7, "description": "More capacity aids reliability."},
+    {"source": "grid_reliability", "target": "industrial_capacity", "type": "positive", "weight": 0.8, "description": "Stable grid enables industry."},
+    {"source": "industrial_capacity", "target": "electrification", "type": "positive", "weight": 0.5, "description": "Expansion aids overall access."}
+  ],
+  "cross_sector_dependencies": [],
+  "interventions": [
+    {"id": "inv_grid", "name": "Smart Grid Upgrade", "description": "Deploy smart meters and grid balancing tech.", "target_indicator": "grid_reliability", "expected_improvement": 0.15, "time_horizon_years": 4}
+  ],
+  "assumptions": [],
+  "sources": []
+}

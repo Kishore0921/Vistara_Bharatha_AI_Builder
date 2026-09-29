@@ -1,0 +1,23 @@
+{
+  "sector": "manufacturing",
+  "description": "Industrial production, supply chain, and output.",
+  "indicators": [
+    {"id": "workforce", "name": "Manufacturing Workforce", "description": "Labor available for plants.", "unit": "Index", "weight": 0.25, "current_value": 55.0},
+    {"id": "production_capacity", "name": "Production Capacity", "description": "Total plant capacity.", "unit": "Index", "weight": 0.3, "current_value": 60.0},
+    {"id": "supply_chain", "name": "Supply Chain Efficiency", "description": "Raw material to factory efficiency.", "unit": "Index", "weight": 0.2, "current_value": 45.0},
+    {"id": "output", "name": "Industrial Output", "description": "Finished goods produced.", "unit": "Index", "weight": 0.25, "current_value": 50.0}
+  ],
+  "historical_data": [],
+  "decisions": [],
+  "dependencies": [
+    {"source": "workforce", "target": "production_capacity", "type": "positive", "weight": 0.6, "description": "Labor needed for capacity utilization."},
+    {"source": "production_capacity", "target": "output", "type": "positive", "weight": 0.8, "description": "Capacity drives output."},
+    {"source": "supply_chain", "target": "output", "type": "positive", "weight": 0.7, "description": "Efficient supply chain maximizes output."}
+  ],
+  "cross_sector_dependencies": [],
+  "interventions": [
+    {"id": "inv_pli", "name": "PLI Scheme Expansion", "description": "Production Linked Incentives for heavy industries.", "target_indicator": "production_capacity", "expected_improvement": 0.15, "time_horizon_years": 4}
+  ],
+  "assumptions": [],
+  "sources": []
+}
